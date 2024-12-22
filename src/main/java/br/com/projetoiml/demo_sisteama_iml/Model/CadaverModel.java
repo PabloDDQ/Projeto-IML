@@ -1,42 +1,34 @@
+package br.com.projetoiml.demo_sisteama_iml.Model;
+
 import java.time.LocalDate;
 
-public class Cadaver {
-    private int id;
+import jakarta.persistence.*;
+
+@Entity
+public class CadaverModel {
+
+    private static int contador = 0;
+    @Id
+    private String id;
+    
     private boolean realizouAutopsia;
     private String nome;
     private String sobrenome;
     private String sexo;
     private String CPF;
-    private String contato;
     private LocalDate dataNascimento;
     private LocalDate dataFalecimento;
     private String causaDaMorte;
-    private boolean doadorOrgaos;
     private String localExumacao;
     
-    
-    
-    public Cadaver(int id, boolean realizouAutopsia, String nome, String sobrenome, String sexo, String cPF,
-            String contato, LocalDate dataNascimento, LocalDate dataFalecimento, String causaDaMorte,
-            boolean doadorOrgaos, String localExumacao) {
-        this.id = id;
-        this.realizouAutopsia = realizouAutopsia;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.sexo = sexo;
-        CPF = cPF;
-        this.contato = contato;
-        this.dataNascimento = dataNascimento;
-        this.dataFalecimento = dataFalecimento;
-        this.causaDaMorte = causaDaMorte;
-        this.doadorOrgaos = doadorOrgaos;
-        this.localExumacao = localExumacao;
+    public CadaverModel(){
+        this.id = String.format("C%03d", ++contador);
     }
     
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public boolean isRealizouAutopsia() {
@@ -69,12 +61,6 @@ public class Cadaver {
     public void setCPF(String cPF) {
         CPF = cPF;
     }
-    public String getContato() {
-        return contato;
-    }
-    public void setContato(String contato) {
-        this.contato = contato;
-    }
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
@@ -92,12 +78,6 @@ public class Cadaver {
     }
     public void setCausaDaMorte(String causaDaMorte) {
         this.causaDaMorte = causaDaMorte;
-    }
-    public boolean isDoadorOrgaos() {
-        return doadorOrgaos;
-    }
-    public void setDoadorOrgaos(boolean doadorOrgaos) {
-        this.doadorOrgaos = doadorOrgaos;
     }
     public String getLocalExumacao() {
         return localExumacao;
